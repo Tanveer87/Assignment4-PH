@@ -63,8 +63,8 @@
                     <input id="firstClass-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="plus-minus-btn">
-                    <button id="firstClass-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                    <button id="firstClass-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <button onclick="handleProductChange(true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="handleProductChange(false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             
@@ -113,25 +113,48 @@
     <!--Thank You-->
 
     <script>
-        document.getElementById("firstClass-increase").addEventListener("click",function(){
-           const firstClassInput = document.getElementById  ("firstClass-count");
+        // document.getElementById("firstClass-increase").addEventListener("click",function(){
+        //   handleProductChange(true);
+
+        // })
+        // document.getElementById("firstClass-decrease").addEventListener("click",function(){
+        //     handleProductChange(false);
+        // })
+        function handleProductChange(isIncrease){
+            const firstClassInput = document.getElementById  ("firstClass-count");
             const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount =firstClassCount +1;
+            // const firstClassNewCount =firstClassCount -1;
+            let firstClassNewCount = firstClassCount;
+            if(isIncrease==true){
+                firstClassNewCount =firstClassCount +1;
+            }
+            if(isIncrease==false && firstClassCount>0){
+                firstClassNewCount = firstClassCount -1;
+            }
             firstClassInput.value = firstClassNewCount;
 
             const totalAmount=firstClassNewCount *150;
             document.getElementById("total").innerText= '$' +totalAmount;
+        }
+        // document.getElementById("firstClass-increase").addEventListener("click",function(){
+        //    const firstClassInput = document.getElementById  ("firstClass-count");
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount =firstClassCount +1;
+        //     firstClassInput.value = firstClassNewCount;
 
-        })
-        document.getElementById("firstClass-decrease").addEventListener("click",function(){
-           const firstClassInput = document.getElementById  ("firstClass-count");
-            const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount =firstClassCount -1;
-            firstClassInput.value = firstClassNewCount;
+        //     const totalAmount=firstClassNewCount *150;
+        //     document.getElementById("total").innerText= '$' +totalAmount;
 
-            const totalAmount=firstClassNewCount *150;
-            document.getElementById("total").innerText= '$' +totalAmount;
-        })
+        // })
+        // document.getElementById("firstClass-decrease").addEventListener("click",function(){
+        //    const firstClassInput = document.getElementById  ("firstClass-count");
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount =firstClassCount -1;
+        //     firstClassInput.value = firstClassNewCount;
+
+        //     const totalAmount=firstClassNewCount *150;
+        //     document.getElementById("total").innerText= '$' +totalAmount;
+        // })
 
     </script>
 </body>
